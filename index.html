@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Scrum Board - Manage your tasks with ease</title>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="app/assets/stylesheets/app.css">
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="clear">
+        <ul>
+          <li>Rejected</li>
+          <li>Pending</li>
+          <li>Development</li>
+          <li>Testing</li>
+          <li>Production</li>
+        </ul>
+      </header>
+      <section id="dashboard" class="dashboard clear">
+        <div id="rejected" class="rejected"></div>
+        <div id="pending" class="pending"></div>
+        <div id="development" class="development"></div>
+        <div id="testing" class="testing"></div>
+        <div id="production" class="production"></div>
+      </section>
+      
+      <footer>
+        <ul>
+          <li class="branding">Scrum <span>Board</span> <sup>Beta</sup></li>
+        </ul>
+        
+        <ul class="controls">
+          <li data-tooltip="Drag A Task Here To Delete">
+            <a href="#" class="remove" id="remove">
+              <img src="app/assets/images/bin.svg" alt="">
+            </a>
+          </li>
+          <li data-tooltip="Add Task">
+            <a href="#" id="add-task" class="add-task">
+              <img src="app/assets/images/plus.svg" alt="">
+            </a>
+          </li>
+          <li data-tooltip="Github" class="github-ref">
+            <a href="#">
+              <img src="app/assets/images/github.svg" alt="">
+            </a>
+          </li>
+        </ul>
+      </footer>
+    </div>
+    
+    <div id="removed-task-notification" class="removed-task-notification hide"></div>
+    
+    <div class="modal hide" id="add-task-modal">
+      <div class="modal-wrapper">
+        <form action="index.html" method="post" class="add-task-form" name="add_task">
+          <span class="close-modal">X</span>
+          
+          <h3>Add a new Task</h3>
+          
+          <ul>
+            <li>
+              <input type="text" name="title" placeholder="Title" autofocus>
+            </li>
+            <li>
+              <textarea name="description" placeholder="Description"></textarea>
+            </li>
+            <li>
+              <input type="text" name="remote_url" placeholder="Remote Task URL">
+            </li>
+            <li>
+              <input type="text" name="assigned_to" placeholder="Assigned To">
+            </li>
+            <li>
+              <input type="submit" name="create_task" value="Create Task">
+            </li>
+          </ul>
+        </form>
+      </div>
+      
+      <div class="create-task-branding">
+        Scrum <span>Board</span> <sup>Beta</sup>
+      </div>
+    </div>
+    
+    <script id="task-card-template" type="text/x-handlebars-template">
+      {{#each this}}
+        <div class="card" data-task-id="{{id}}">
+          <a href="#" class="expand-card"></a>
+          <h5>{{title}}</h5>
+          <div class="card-details">
+            <p data-field="description">{{description}}</p>
+            <p data-field="remote_url"><a href="{{remote_url}}" target="_blank">{{remote_url}}</a></p>
+            <p data-field="assigned_to">{{assigned_to}}</p>
+          </div>
+        </div>
+      {{/each}}
+    </script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="app/assets/scripts/handlebars-v4.0.5.js"></script>
+    <script src="app/assets/scripts/localstorage.js"></script>
+    <script src="app/assets/scripts/app.js"></script>
+  </body>
+</html>

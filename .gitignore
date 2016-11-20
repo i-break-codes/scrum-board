@@ -1,0 +1,4 @@
+/node_modules
+.DS_Store
+app/assets/scripts
+app/assets/stylesheets
