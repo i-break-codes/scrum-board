@@ -3,6 +3,9 @@ JavaScript Scrum App to manage tasks with ease.
 
 > Warning : It uses localstorage to store your tasks, make sure you don't clean up your Local Storage for this app atleast.
 
+#### Demo
+[View](https://i-break-codes.github.io/scrum-board/)
+
 #### Setup
 - Clone Application by typing the following command in your terminal `git@github.com:i-break-codes/scrum-board.git`
 - Install node modules - `npm install`
