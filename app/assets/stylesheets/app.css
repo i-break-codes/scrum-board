@@ -330,6 +330,17 @@ footer {
   .controls li {
     float: left;
     margin-right: 20px; }
+  .controls iframe {
+    margin-top: 5px; }
+  .controls .twitter-share-button {
+    background-color: #1b95e0;
+    padding: 2px 10px;
+    font-size: 12px;
+    border-radius: 3px;
+    vertial-align: middle;
+    position: absolute;
+    top: 4px;
+    left: -70px; }
 
 .branding,
 .create-task-branding {
