@@ -528,3 +528,51 @@ footer {
     width: 29px;
   }
 }
+
+.onboard {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .7);
+  z-index: 2;
+}
+
+.onboard-modal {
+  height: 300px;
+  width: 450px;
+  background-color: #fff;
+  border-radius: 3px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.tips {
+  position: absolute;
+  bottom: 90px;
+  right: -280px;
+  font-size: 13px;
+  background-color: rgba(0,0,0,.3);
+  padding: 10px;
+  border-radius: 3px;
+  padding-left: 25px;
+  opacity: 0;
+  animation: showTips 500ms ease-in forwards;
+  cursor: pointer;
+  background: {
+    image: url('../images/info.svg');
+    position: 4px center;
+    size: 16px;
+    repeat: no-repeat;
+  }
+}
+
+@keyframes showTips {
+  to {
+    right: 20px;
+    opacity: 1;
+  }
+}

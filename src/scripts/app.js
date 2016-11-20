@@ -1,5 +1,6 @@
 var App = function() {
   function init() {
+    tips();
     preset();
     draggable();
     droppable();
@@ -191,6 +192,17 @@ var App = function() {
         draggable();
       }
     }
+  }
+  
+  function tips() {
+    if(!JSON.parse(LocalStorage.get('showedTip'))) {
+      $('#tips').removeClass('hide').addClass('tips');
+    }
+    
+    $('#tips').on('click', function() {
+      $(this).addClass('hide');
+      LocalStorage.set('showedTip', true);
+    });
   }
   
   return {
