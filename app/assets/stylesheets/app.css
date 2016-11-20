@@ -101,7 +101,8 @@ header {
     font-size: 13px;
     line-height: 50px;
     padding-left: 10px;
-    font-weight: 300; }
+    font-weight: 300;
+    cursor: move; }
   .card.edit-mode h5 {
     position: relative; }
     .card.edit-mode h5:after {
