@@ -77,7 +77,7 @@ var App = function() {
   }
   
   function editTask() {
-    $('.card-details p').on('dblclick', function(e) {
+    $(document).on('dblclick', '.card-details p', function(e) {
       e.stopPropagation();
       $(this).attr('contenteditable','true').parents('.card').addClass('edit-mode');
     });
