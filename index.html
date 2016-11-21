@@ -1,3 +1,14 @@
+<!--
+  /**
+   * logerr
+   *
+   * @category   scrum-board
+   * @author     Vaibhav Mehta <vaibhav@decodingweb.com>
+   * @copyright  Copyright (c) 2016 Vaibhav Mehta <https://github.com/i-break-codes>
+   * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
+   * @version    1.0 Beta
+   */
+-->
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -106,7 +117,7 @@
     </div>
     
     <div class="hide" id="tips">
-      Double click on the task text to edit it
+      Double click on the task text to edit it <br> <span>(Task titles are not editable for now)</span>
     </div>
     
     <script id="task-card-template" type="text/x-handlebars-template">
@@ -116,8 +127,12 @@
           <h5>{{title}}</h5>
           <div class="card-details">
             <p data-field="description">{{description}}</p>
-            <p data-field="remote_url"><a href="{{#checkForBlank remote_url}}{{/checkForBlank}}" target="_blank">{{#checkForBlank remote_url}}{{/checkForBlank}}</a></p>
-            <p data-field="assigned_to">{{#checkForBlank assigned_to}}{{/checkForBlank}}</p>
+            <p data-field="remote_url">
+              {{#checkIfEmptyRemoteURL remote_url}}{{/checkIfEmptyRemoteURL}}
+            </p>
+            <p data-field="assigned_to">
+              {{#checkIfEmptyAssigned assigned_to}}{{/checkIfEmptyAssigned}}
+            </p>
           </div>
         </div>
       {{/each}}

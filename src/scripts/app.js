@@ -1,3 +1,13 @@
+/**
+ * logerr
+ *
+ * @category   scrum-board
+ * @author     Vaibhav Mehta <vaibhav@decodingweb.com>
+ * @copyright  Copyright (c) 2016 Vaibhav Mehta <https://github.com/i-break-codes>
+ * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
+ * @version    1.0 Beta
+ */
+
 var App = function() {
   function init() {
     tips();
@@ -51,7 +61,7 @@ var App = function() {
           var keyVal = splitParams[i].split('=');
           obj[keyVal[0]] = unescape(keyVal[1]);
         }
-        
+
         // TODO: Add validations
         if(obj.description === '' || obj.title === '') {
           return;
@@ -77,12 +87,12 @@ var App = function() {
   }
   
   function editTask() {
-    $('.card-details p').on('dblclick', function(e) {
+    $(document).on('dblclick', '.card-details p', function(e) {
       e.stopPropagation();
       $(this).attr('contenteditable','true').parents('.card').addClass('edit-mode');
     });
     
-    $('.card').find('p').on('input', function() {
+    $(document).on('input', '.card p', function() {
       var taskId = $(this).parents('.card').data('task-id');
       var fieldToEdit = $(this).data('field');
       var getTaskData = JSON.parse(LocalStorage.get('task-' + taskId));
