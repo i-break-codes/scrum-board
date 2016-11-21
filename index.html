@@ -105,8 +105,8 @@
           <h5>{{title}}</h5>
           <div class="card-details">
             <p data-field="description">{{description}}</p>
-            <p data-field="remote_url"><a href="{{remote_url}}" target="_blank">{{remote_url}}</a></p>
-            <p data-field="assigned_to">{{assigned_to}}</p>
+            <p data-field="remote_url"><a href="{{#checkForBlank remote_url}}{{/checkForBlank}}" target="_blank">{{#checkForBlank remote_url}}{{/checkForBlank}}</a></p>
+            <p data-field="assigned_to">{{#checkForBlank assigned_to}}{{/checkForBlank}}</p>
           </div>
         </div>
       {{/each}}
@@ -116,6 +116,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
     <script src="https://buttons.github.io/buttons.js"></script>
     <script src="app/assets/scripts/lib/handlebars-v4.0.5.js"></script>
+    <script src="app/assets/scripts/helper.js"></script>
     <script src="app/assets/scripts/localstorage.js"></script>
     <script src="app/assets/scripts/app.js"></script>
   </body>

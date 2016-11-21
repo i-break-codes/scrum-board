@@ -52,6 +52,11 @@ var App = function() {
           obj[keyVal[0]] = unescape(keyVal[1]);
         }
         
+        // TODO: Add validations
+        if(obj.description === '' || obj.title === '') {
+          return;
+        }
+        
         var iid = LocalStorage.get('taskCounter');
         obj.id = ++iid;
         obj.status = 'pending';
@@ -63,6 +68,9 @@ var App = function() {
         draggable();
         
         $('.close-modal').trigger('click');
+        
+        //Clear form fields after submit
+        $(this).find('input[type=text], textarea').val('');
       });
       
     });
