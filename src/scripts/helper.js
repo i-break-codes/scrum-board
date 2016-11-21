@@ -1,5 +1,5 @@
 /**
- * logerr
+ * scrum-board
  *
  * @category   scrum-board
  * @author     Vaibhav Mehta <vaibhav@decodingweb.com>

@@ -1,3 +1,13 @@
+/**
+ * scrum-board
+ *
+ * @category   scrum-board
+ * @author     Vaibhav Mehta <vaibhav@decodingweb.com>
+ * @copyright  Copyright (c) 2016 Vaibhav Mehta <https://github.com/i-break-codes>
+ * @license    http://www.opensource.org/licenses/mit-license.html  MIT License
+ * @version    1.0 Beta
+ */
+
 var gulp         = require('gulp'),
     browserSync  = require('browser-sync'),
     sass         = require('gulp-sass'),
