@@ -118,14 +118,18 @@ var App = function() {
   function draggable() {
     $('.card').draggable({
       handle: 'h5',
-      revert: true,
-      cursor: 'move',
-      start: function(event, ui) {
-        
+      revert: false,
+      helper: function(e) {
+        //Cloning element, to enable draggable elements move out of scrollable parent element.
+        var original = $(e.target).hasClass("ui-draggable") ? $(e.target) : $(e.target).closest(".ui-draggable");
+        return original.clone().css({
+          width: original.width()
+        });
       },
-      stop: function(event, ui) {
-        
-      }
+      scroll: false,
+      cursor: 'move',
+      start: function(event, ui) {},
+      stop: function(event, ui) {}
     });
   }
   
