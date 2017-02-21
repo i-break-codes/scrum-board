@@ -87,9 +87,9 @@ var App = function() {
   }
   
   function editTask() {
-    $(document).on('dblclick', '.card-details p', function(e) {
+    $(document).on('dblclick', '.card-details', function(e) {
       e.stopPropagation();
-      $(this).attr('contenteditable','true').parents('.card').addClass('edit-mode');
+      $(this).find('p').attr('contenteditable','true').parents('.card').addClass('edit-mode');
     });
     
     $(document).on('input', '.card p', function() {
