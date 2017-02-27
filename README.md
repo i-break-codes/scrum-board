@@ -11,6 +11,7 @@ JavaScript Scrum App to manage tasks with ease.
 - All updated text will be saved automatically without you doing anything except for typing out your edits on the card. (Can't edit titles as of now, will be released in next version.)
 - Drag your task card to the bin(red) on the footer to delete your task (Note that this cannot be reverted)
 - Move your task card around to update the status of your task, say from Development to Testing and so on.
+- Update a column name by double clicking on Title text.
 
 ---
 
@@ -27,7 +28,7 @@ JavaScript Scrum App to manage tasks with ease.
 ---
 
 #### More to come
-- [ ] Edit task title
+- [x] Edit task title
 - [ ] Set tasks priority
 - [ ] Import / Export tasks
 - [ ] Remember expanded/collapsed state of a task
