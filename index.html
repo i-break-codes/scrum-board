@@ -12,19 +12,9 @@
     <div class="wrapper">
       <header class="clear">
         <ul>
-          <li>Rejected</li>
-          <li>Pending</li>
-          <li>Development</li>
-          <li>Testing</li>
-          <li>Production</li>
         </ul>
       </header>
       <section id="dashboard" class="dashboard clear">
-        <div id="rejected" class="rejected"></div>
-        <div id="pending" class="pending"></div>
-        <div id="development" class="development"></div>
-        <div id="testing" class="testing"></div>
-        <div id="production" class="production"></div>
       </section>
       
       <footer>
@@ -54,6 +44,25 @@
     
     <div id="removed-task-notification" class="removed-task-notification hide"></div>
     
+   <div class="modal hide" id="change-status-modal">
+     <div class="modal-wrapper">
+       <form action="index.html" method="post" class="change-status-form" name="change_status">
+          <span class="close-modal">X</span>
+
+          <h3>Change column name</h3>
+
+          <ul>
+            <li>
+              <input type="text" id="new_status" placeholder="Column name" autofocus>
+            </li>
+            <li>
+              <input type="submit" name="change_status" value="Change column name">
+            </li>
+          </ul>
+       </form>
+     </div>
+   </div>
+
     <div class="modal hide" id="add-task-modal">
       <div class="modal-wrapper">
         <form action="index.html" method="post" class="add-task-form" name="add_task">
@@ -87,7 +96,7 @@
     </div>
     
     <div class="hide" id="tips">
-      Double click on the task text to edit it <br> <span>(Task titles are not editable for now)</span>
+      Double click on the task text to edit it <br> <span>(Task titles are <b>editable</b> for now)</span>
     </div>
     
     <script id="task-card-template" type="text/x-handlebars-template">
