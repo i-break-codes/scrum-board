@@ -12,6 +12,8 @@ var App = function() {
   function init() {
     tips();
     preset();
+    addStatusColumns();
+    changeStatus();
     draggable();
     droppable();
     openCard();
@@ -38,9 +40,62 @@ var App = function() {
     
     if(!LocalStorage.get('appInitialized', true)) {
       LocalStorage.set('taskCounter', 1);
+      LocalStorage.set('status', JSON.stringify([
+        {key: 'rejected', value: 'Rejected'}, 
+        {key: 'pending', value: 'Pending'}, 
+        {key: 'development', value: 'Development'}, 
+        {key: 'testing', value: 'Testing'}, 
+        {key: 'production', value: 'Production'}]));
       LocalStorage.set('task-1', JSON.stringify(defaultTask));
       LocalStorage.set('appInitialized', true);
     }
+  }
+
+  function addStatusColumns(){
+
+    var statusArr = JSON.parse(LocalStorage.get('status'));
+    var headerObj = $('header ul');
+    var myDashboard = $('#dashboard');
+    statusArr.map(function(item){
+      var newLi = $('<li>' + item.value + '</li>');
+      newLi.attr('data-id', item.key);
+      headerObj.append(newLi);
+
+      var newDiv = $('<div id=' + item.key + ' class=' + item.key + '></div>');
+      myDashboard.append(newDiv);
+    });
+    
+  }
+
+  function changeStatus(){
+    $('header li').on('dblclick', function(e){
+        e.preventDefault();
+        var statusToChange = $(this).attr('data-id');
+        
+        $('#change-status-modal').removeClass('hide');
+
+        $('#new_status').val($(this).text());
+
+        $('#change-status-modal').find('form').on('submit', function(e){
+            e.preventDefault();
+            var newStatus = $('#new_status').val();
+            var currentStatus = JSON.parse(LocalStorage.get('status'));
+            currentStatus.map(function(obj){
+                if(obj.key == statusToChange)
+                {
+                  obj.value = newStatus;
+                }
+            });
+
+            $('header ul li[data-id=' + statusToChange + ']').html(newStatus);
+
+            LocalStorage.set('status', JSON.stringify(currentStatus));
+
+            
+            $('.close-modal').trigger('click');
+
+        });
+    });
   }
   
   function createTask() {
@@ -201,16 +256,16 @@ var App = function() {
     var source = $("#task-card-template").html();
     var template = Handlebars.compile(source);
     
-    var status = ['rejected', 'pending', 'development', 'testing', 'production'];
+    var status = JSON.parse(LocalStorage.get('status'));
     
     for(var i = 0, l = status.length; i < l; i++) {
       var result = App.getAllNotes().filter(function(obj) {
-        return obj.status == status[i];
+        return obj.status == status[i].key;
       });
       
       if(result) {
         var cards = template(result);
-        $('#dashboard #' + status[i]).append(cards);
+        $('#dashboard #' + status[i].key).append(cards);
         draggable();
       }
     }
